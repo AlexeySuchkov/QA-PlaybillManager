@@ -3,7 +3,16 @@ package ru.netology.manager;
 import ru.netology.domain.AddItem;
 
 public class AfishaManager {
+    private int afishaLength = 10;
+
+    public AfishaManager(int afishaLength) {
+        if (afishaLength < 0) {afishaLength = 0;}
+        this.afishaLength = afishaLength;
+    }
+
+
     private AddItem[] items = new AddItem[0];
+
 
     public void add(AddItem item) {
         // создаём новый массив размером на единицу больше
@@ -23,17 +32,21 @@ public class AfishaManager {
     }
 
     public AddItem[] getAll() {
-        int count = items.length;
-        if (items.length > 9) {count = 10;}
-        AddItem[] result = new AddItem[count];
-        // перебираем массив в прямом порядке
-        // но кладём в результаты в обратно
-        if (items.length < 10);{
+        if (afishaLength > 0) {
+            int defaultLength = items.length;
+            if (afishaLength > items.length) {afishaLength = defaultLength;}
+            if (items.length > 9) {defaultLength = afishaLength;}
+            AddItem[] result = new AddItem[defaultLength];
+            // перебираем массив в прямом порядке
+            // но кладём в результаты в обратно
+
             for (int i = 0; i < result.length; i++) {
                 int index = items.length - i - 1;
                 result[i] = items[index];
             }
-        } return result;
+            return result;
+        }
+        return new AddItem[afishaLength];
     }
 
 }
