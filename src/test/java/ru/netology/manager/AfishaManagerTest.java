@@ -1,26 +1,27 @@
 package ru.netology.manager;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import ru.netology.domain.AddItem;
+import ru.netology.domain.Film;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class AfishaManagerTest {
+    AfishaManager manager = new AfishaManager(1);
+    private Film first = new Film(1, 1, "first");
+    private Film second = new Film(2, 2, "second");
+    private Film third = new Film(3, 3, "third");
+    private Film fourth = new Film(4, 4, "fourth");
+    private Film fifth = new Film(5, 5, "fifth");
+    private Film sixth = new Film(6, 6, "sixth");
+    private Film seventh = new Film(7, 7, "seventh");
+    private Film eighth = new Film(8, 8, "eighth");
+    private Film ninth = new Film(9, 9, "ninth");
+    private Film tenth = new Film(10, 10, "tenth");
+    private Film eleventh = new Film(11, 11, "eleventh");
     @Test
-    public void MoreFilmsThan10Set1() {
+    public void moreFilmsThan10Set1() {
         AfishaManager manager = new AfishaManager(1);
-        AddItem first = new AddItem(1, 1, "first");
-        AddItem second = new AddItem(2, 2, "second");
-        AddItem third = new AddItem(3, 3, "third");
-        AddItem fourth = new AddItem(4, 4, "fourth");
-        AddItem fifth = new AddItem(5, 5, "fifth");
-        AddItem sixth = new AddItem(6, 6, "sixth");
-        AddItem seventh = new AddItem(7, 7, "seventh");
-        AddItem eighth = new AddItem(8, 8, "eighth");
-        AddItem ninth = new AddItem(9, 9, "ninth");
-        AddItem tenth = new AddItem(10, 10, "tenth");
-        AddItem eleventh = new AddItem(11, 11, "eleventh");
         manager.add(first);
         manager.add(second);
         manager.add(third);
@@ -34,26 +35,15 @@ public class AfishaManagerTest {
         manager.add(eleventh);
 
 
-        AddItem[] actual = manager.getAll();
-        AddItem[] expected = new AddItem[]{eleventh};
+        Film[] actual = manager.getAll();
+        Film[] expected = new Film[]{eleventh};
 
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void MoreFilmsThan10DefaultOutput() {
+    public void moreFilmsThan10DefaultOutput() {
         AfishaManager manager = new AfishaManager(10);
-        AddItem first = new AddItem(1, 1, "first");
-        AddItem second = new AddItem(2, 2, "second");
-        AddItem third = new AddItem(3, 3, "third");
-        AddItem fourth = new AddItem(4, 4, "fourth");
-        AddItem fifth = new AddItem(5, 5, "fifth");
-        AddItem sixth = new AddItem(6, 6, "sixth");
-        AddItem seventh = new AddItem(7, 7, "seventh");
-        AddItem eighth = new AddItem(8, 8, "eighth");
-        AddItem ninth = new AddItem(9, 9, "ninth");
-        AddItem tenth = new AddItem(10, 10, "tenth");
-        AddItem eleventh = new AddItem(11, 11, "eleventh");
         manager.add(first);
         manager.add(second);
         manager.add(third);
@@ -67,8 +57,8 @@ public class AfishaManagerTest {
         manager.add(eleventh);
 
 
-        AddItem[] actual = manager.getAll();
-        AddItem[] expected = new AddItem[]{eleventh, tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second};
+        Film[] actual = manager.getAll();
+        Film[] expected = new Film[]{eleventh, tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second};
 
         assertArrayEquals(expected, actual);
     }
@@ -76,49 +66,32 @@ public class AfishaManagerTest {
     @Test
     public void zeroFilms() {
         AfishaManager manager = new AfishaManager(0);
-        AddItem first = new AddItem(1, 1, "first");
-        AddItem second = new AddItem(2, 2, "second");
-        AddItem third = new AddItem(3, 3, "third");
         manager.add(first);
         manager.add(second);
         manager.add(third);
 
-        AddItem[] actual = manager.getAll();
-        AddItem[] expected = new AddItem[]{};
+        Film[] actual = manager.getAll();
+        Film[] expected = new Film[]{};
 
         assertArrayEquals(expected, actual);
     }
     @Test
     public void lessFilmsThan10() {
         AfishaManager manager = new AfishaManager(5);
-        AddItem first = new AddItem(1, 1, "first");
-        AddItem second = new AddItem(2, 2, "second");
-        AddItem third = new AddItem(3, 3, "third");
         manager.add(first);
         manager.add(second);
         manager.add(third);
 
 
-        AddItem[] actual = manager.getAll();
-        AddItem[] expected = new AddItem[]{third, second, first};
+        Film[] actual = manager.getAll();
+        Film[] expected = new Film[]{third, second, first};
 
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    public void MoreFilmsThan10Set7() {
+    public void moreFilmsThan10Set7() {
         AfishaManager manager = new AfishaManager(7);
-        AddItem first = new AddItem(1, 1, "first");
-        AddItem second = new AddItem(2, 2, "second");
-        AddItem third = new AddItem(3, 3, "third");
-        AddItem fourth = new AddItem(4, 4, "fourth");
-        AddItem fifth = new AddItem(5, 5, "fifth");
-        AddItem sixth = new AddItem(6, 6, "sixth");
-        AddItem seventh = new AddItem(7, 7, "seventh");
-        AddItem eighth = new AddItem(8, 8, "eighth");
-        AddItem ninth = new AddItem(9, 9, "ninth");
-        AddItem tenth = new AddItem(10, 10, "tenth");
-        AddItem eleventh = new AddItem(11, 11, "eleventh");
         manager.add(first);
         manager.add(second);
         manager.add(third);
@@ -132,25 +105,14 @@ public class AfishaManagerTest {
         manager.add(eleventh);
 
 
-        AddItem[] actual = manager.getAll();
-        AddItem[] expected = new AddItem[]{eleventh, tenth, ninth, eighth, seventh, sixth, fifth};
+        Film[] actual = manager.getAll();
+        Film[] expected = new Film[]{eleventh, tenth, ninth, eighth, seventh, sixth, fifth};
 
         assertArrayEquals(expected, actual);
     }
     @Test
-    public void MoreFilmsThan10SetMinus10() {
+    public void moreFilmsThan10SetMinus10() {
         AfishaManager manager = new AfishaManager(-10);
-        AddItem first = new AddItem(1, 1, "first");
-        AddItem second = new AddItem(2, 2, "second");
-        AddItem third = new AddItem(3, 3, "third");
-        AddItem fourth = new AddItem(4, 4, "fourth");
-        AddItem fifth = new AddItem(5, 5, "fifth");
-        AddItem sixth = new AddItem(6, 6, "sixth");
-        AddItem seventh = new AddItem(7, 7, "seventh");
-        AddItem eighth = new AddItem(8, 8, "eighth");
-        AddItem ninth = new AddItem(9, 9, "ninth");
-        AddItem tenth = new AddItem(10, 10, "tenth");
-        AddItem eleventh = new AddItem(11, 11, "eleventh");
         manager.add(first);
         manager.add(second);
         manager.add(third);
@@ -164,25 +126,14 @@ public class AfishaManagerTest {
         manager.add(eleventh);
 
 
-        AddItem[] actual = manager.getAll();
-        AddItem[] expected = new AddItem[]{};
+        Film[] actual = manager.getAll();
+        Film[] expected = new Film[]{};
 
         assertArrayEquals(expected, actual);
     }
     @Test
-    public void MoreFilmsThan10Set100() {
+    public void moreFilmsThan10Set100() {
         AfishaManager manager = new AfishaManager(100);
-        AddItem first = new AddItem(1, 1, "first");
-        AddItem second = new AddItem(2, 2, "second");
-        AddItem third = new AddItem(3, 3, "third");
-        AddItem fourth = new AddItem(4, 4, "fourth");
-        AddItem fifth = new AddItem(5, 5, "fifth");
-        AddItem sixth = new AddItem(6, 6, "sixth");
-        AddItem seventh = new AddItem(7, 7, "seventh");
-        AddItem eighth = new AddItem(8, 8, "eighth");
-        AddItem ninth = new AddItem(9, 9, "ninth");
-        AddItem tenth = new AddItem(10, 10, "tenth");
-        AddItem eleventh = new AddItem(11, 11, "eleventh");
         manager.add(first);
         manager.add(second);
         manager.add(third);
@@ -196,8 +147,8 @@ public class AfishaManagerTest {
         manager.add(eleventh);
 
 
-        AddItem[] actual = manager.getAll();
-        AddItem[] expected = new AddItem[]{eleventh, tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second, first};
+        Film[] actual = manager.getAll();
+        Film[] expected = new Film[]{eleventh, tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second, first};
 
         assertArrayEquals(expected, actual);
     }

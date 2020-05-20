@@ -1,23 +1,25 @@
 package ru.netology.manager;
 
-import ru.netology.domain.AddItem;
+import ru.netology.domain.Film;
 
 public class AfishaManager {
     private int afishaLength = 10;
 
     public AfishaManager(int afishaLength) {
-        if (afishaLength < 0) {afishaLength = 0;}
+        if (afishaLength < 0) {
+            afishaLength = 0;
+        }
         this.afishaLength = afishaLength;
     }
 
 
-    private AddItem[] items = new AddItem[0];
+    private Film[] items = new Film[0];
 
 
-    public void add(AddItem item) {
+    public void add(Film item) {
         // создаём новый массив размером на единицу больше
         int length = items.length + 1;
-        AddItem[] tmp = new AddItem[length];
+        Film[] tmp = new Film[length];
         // itar + tab
         // копируем поэлементно
         // for (int i = 0; i < items.length; i++) {
@@ -31,12 +33,16 @@ public class AfishaManager {
         items = tmp;
     }
 
-    public AddItem[] getAll() {
+    public Film[] getAll() {
         if (afishaLength > 0) {
             int defaultLength = items.length;
-            if (afishaLength > items.length) {afishaLength = defaultLength;}
-            if (items.length > 9) {defaultLength = afishaLength;}
-            AddItem[] result = new AddItem[defaultLength];
+            if (afishaLength > items.length) {
+                afishaLength = defaultLength;
+            }
+            if (items.length > 9) {
+                defaultLength = afishaLength;
+            }
+            Film[] result = new Film[defaultLength];
             // перебираем массив в прямом порядке
             // но кладём в результаты в обратно
 
@@ -46,7 +52,6 @@ public class AfishaManager {
             }
             return result;
         }
-        return new AddItem[afishaLength];
+        return new Film[afishaLength];
     }
-
 }
