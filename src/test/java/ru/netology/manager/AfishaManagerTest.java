@@ -1,14 +1,12 @@
 package ru.netology.manager;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import ru.netology.domain.Film;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 
 public class AfishaManagerTest {
+    private AfishaManager manager = new AfishaManager(1);
 
     private Film first = new Film(1, 1, "first");
     private Film second = new Film(2, 2, "second");
@@ -21,9 +19,10 @@ public class AfishaManagerTest {
     private Film ninth = new Film(9, 9, "ninth");
     private Film tenth = new Film(10, 10, "tenth");
     private Film eleventh = new Film(11, 11, "eleventh");
+
     @Test
     public void moreFilmsThan10Set1() {
-        AfishaManager manager = new AfishaManager(1);
+
         manager.add(first);
         manager.add(second);
         manager.add(third);
