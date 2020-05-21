@@ -1,11 +1,13 @@
 package ru.netology.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-@NoArgsConstructor
 @AllArgsConstructor
+@Data
+@NoArgsConstructor
 
 public class Film {
     private int id;
@@ -16,7 +18,4 @@ public class Film {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 }

@@ -40,9 +40,8 @@ public class AfishaRepository {
         items = tmp;
     }
 
-    public void removeAll(int id) {
-        int length = 0;
-        Film[] items = new Film[length];
+    public void removeAll() {
+        items = new Film[0];
     }
 
 }

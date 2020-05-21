@@ -4,8 +4,9 @@ import ru.netology.domain.Film;
 import ru.netology.repository.AfishaRepository;
 
 public class AfishaManager {
+
     private AfishaRepository repository = new AfishaRepository();
-    private int afishaLength = 10;
+    private int afishaLength;
 
     public AfishaManager(int afishaLength) {
         if (afishaLength < 0) {
@@ -15,24 +16,13 @@ public class AfishaManager {
     }
 
     private Film[] items = new Film[0];
-    public void add(Film item) {
-        // создаём новый массив размером на единицу больше
-        int length = items.length + 1;
-        Film[] tmp = new Film[length];
-        // itar + tab
-        // копируем поэлементно
-        // for (int i = 0; i < items.length; i++) {
-        //   tmp[i] = items[i];
-        // }
-        System.arraycopy(items, 0, tmp, 0, items.length);
-        // кладём последним наш элемент
 
-        int lastIndex = tmp.length - 1;
-        tmp[lastIndex] = item;
-        items = tmp;
+    public void add(Film item) {
+        repository.save(item);
     }
 
     public Film[] getAll() {
+        Film[] items = repository.findAll();
         if (afishaLength > 0) {
             int defaultLength = items.length;
             if (afishaLength > items.length) {
