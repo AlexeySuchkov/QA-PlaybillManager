@@ -6,7 +6,7 @@ import ru.netology.repository.AfishaRepository;
 public class AfishaManager {
 
     private AfishaRepository repository = new AfishaRepository();
-    private int afishaLength;
+    private int afishaLength = 10;
 
     public AfishaManager(int afishaLength) {
         if (afishaLength < 0) {
