@@ -20,6 +20,7 @@ public class AfishaRepositoryTest {
     private Film ninth = new Film(9, 9, "ninth");
     private Film tenth = new Film(10, 10, "tenth");
     private Film eleventh = new Film(11, 11, "eleventh");
+    private Film fifteenth = new Film(15, 15, "fifteenth");
 
     @BeforeEach
     void setUp() {
@@ -39,19 +40,7 @@ public class AfishaRepositoryTest {
     @Test
     void findAll() {
         Film[] actual = repository.findAll();
-        Film[] expected = {
-                new Film(1, 1, "first"),
-                new Film(2, 2, "second"),
-                new Film(3, 3, "third"),
-                new Film(4, 4, "fourth"),
-                new Film(5, 5, "fifth"),
-                new Film(6, 6, "sixth"),
-                new Film(7, 7, "seventh"),
-                new Film(8, 8, "eighth"),
-                new Film(9, 9, "ninth"),
-                new Film(10, 10, "tenth"),
-                new Film(11, 11, "eleventh"),
-        };
+        Film[] expected = {first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh};
         assertArrayEquals(expected, actual);
     }
 
@@ -59,20 +48,7 @@ public class AfishaRepositoryTest {
     void save() {
         repository.save(new Film(15, 15, "fifteenth"));
         Film[] actual = repository.findAll();
-        Film[] expected = {
-                new Film(1, 1, "first"),
-                new Film(2, 2, "second"),
-                new Film(3, 3, "third"),
-                new Film(4, 4, "fourth"),
-                new Film(5, 5, "fifth"),
-                new Film(6, 6, "sixth"),
-                new Film(7, 7, "seventh"),
-                new Film(8, 8, "eighth"),
-                new Film(9, 9, "ninth"),
-                new Film(10, 10, "tenth"),
-                new Film(11, 11, "eleventh"),
-                new Film(15, 15, "fifteenth"),
-        };
+        Film[] expected = {first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh, fifteenth};
         assertArrayEquals(expected, actual);
     }
 
@@ -87,24 +63,19 @@ public class AfishaRepositoryTest {
     void removeById() {
         repository.removeById(1);
         Film[] actual = repository.findAll();
-        Film[] expected = {
-                new Film(2, 2, "second"),
-                new Film(3, 3, "third"),
-                new Film(4, 4, "fourth"),
-                new Film(5, 5, "fifth"),
-                new Film(6, 6, "sixth"),
-                new Film(7, 7, "seventh"),
-                new Film(8, 8, "eighth"),
-                new Film(9, 9, "ninth"),
-                new Film(10, 10, "tenth"),
-                new Film(11, 11, "eleventh"),
-        };
+        Film[] expected = {second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh};
         assertArrayEquals(expected, actual);
     }
 
     @Test
     void removeByIdThatNotExist() {
         assertThrows(ArrayIndexOutOfBoundsException.class, () -> repository.removeById(6666) );
+    }
+
+    @Test
+    void findByIdThatNotExist() {
+        repository.findById(6666);
+        assertNull(repository.findById(6666));
     }
 
     @Test
