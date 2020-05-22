@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 
 public class AfishaManagerTest {
-    AfishaManager manager = new AfishaManager(1);
+
     private Film first = new Film(1, 1, "first");
     private Film second = new Film(2, 2, "second");
     private Film third = new Film(3, 3, "third");
