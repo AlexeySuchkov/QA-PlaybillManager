@@ -74,7 +74,6 @@ public class AfishaRepositoryTest {
 
     @Test
     void findByIdThatNotExist() {
-        repository.findById(6666);
         assertNull(repository.findById(6666));
     }
 
