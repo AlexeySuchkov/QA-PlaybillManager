@@ -21,26 +21,44 @@ public class AfishaManager {
         repository.save(item);
     }
 
+    // public Film[] getAll() {
+    //     Film[] items = repository.findAll();
+    //     if (afishaLength > 0) {
+    //         int defaultLength = items.length;
+    //         if (afishaLength > items.length) {
+    //             afishaLength = defaultLength;
+    //         }
+    //         if (items.length > 9) {
+    //             defaultLength = afishaLength;
+    //         }
+    //         Film[] result = new Film[defaultLength];
+    //         // перебираем массив в прямом порядке
+    //         // но кладём в результаты в обратно
+//
+    //         for (int i = 0; i < result.length; i++) {
+    //             int index = items.length - i - 1;
+    //             result[i] = items[index];
+    //         }
+    //         return result;
+    //     }
+    //     return new Film[afishaLength];
+    // }
     public Film[] getAll() {
-        Film[] items = repository.findAll();
-        if (afishaLength > 0) {
-            int defaultLength = items.length;
-            if (afishaLength > items.length) {
-                afishaLength = defaultLength;
-            }
-            if (items.length > 9) {
-                defaultLength = afishaLength;
-            }
-            Film[] result = new Film[defaultLength];
-            // перебираем массив в прямом порядке
-            // но кладём в результаты в обратно
-
-            for (int i = 0; i < result.length; i++) {
-                int index = items.length - i - 1;
-                result[i] = items[index];
-            }
-            return result;
+        int defaultLength = items.length;
+        if (afishaLength > items.length) {
+            afishaLength = defaultLength;
         }
-        return new Film[afishaLength];
+        if (items.length > 9) {
+            defaultLength = afishaLength;
+        }
+        Film[] result = new Film[defaultLength];
+        // перебираем массив в прямом порядке
+        // но кладём в результаты в обратно
+
+        for (int i = 0; i < result.length; i++) {
+            int index = items.length - i - 1;
+            result[i] = items[index];
+        }
+        return result;
     }
 }
