@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AfishaRepositoryTest {
-    private AfishaRepository repository = new AfishaRepository();
+    private AfishaRepository repository;
 
     private Film first = new Film(1, 1, "first");
     private Film second = new Film(2, 2, "second");
