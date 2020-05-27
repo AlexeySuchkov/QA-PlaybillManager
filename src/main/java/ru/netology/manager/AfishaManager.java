@@ -5,42 +5,36 @@ import ru.netology.repository.AfishaRepository;
 
 public class AfishaManager {
 
-    private AfishaRepository repository = new AfishaRepository();
-    private int afishaLength = 10;
+    private AfishaRepository repository;
+    private int afishaLength;
+    private int defaultAfishaLength = 10;
 
-    public AfishaManager(int afishaLength) {
-        if (afishaLength < 0) {
-            afishaLength = 0;
-        }
-        this.afishaLength = afishaLength;
+    public AfishaManager(AfishaRepository repository, int afishalength) {
+        this.repository = repository;
+        this.afishaLength = afishalength;
     }
-
-    private Film[] items = new Film[0];
 
     public void add(Film item) {
         repository.save(item);
     }
 
     public Film[] getAll() {
-        Film[] items = repository.findAll();
-        if (afishaLength > 0) {
-            int defaultLength = items.length;
-            if (afishaLength > items.length) {
-                afishaLength = defaultLength;
-            }
-            if (items.length > 9) {
-                defaultLength = afishaLength;
-            }
-            Film[] result = new Film[defaultLength];
-            // перебираем массив в прямом порядке
-            // но кладём в результаты в обратно
-
-            for (int i = 0; i < result.length; i++) {
-                int index = items.length - i - 1;
-                result[i] = items[index];
-            }
-            return result;
+        Film[] currentAfisha = repository.findAll();
+        int currentAfishaLength = repository.findAll().length;
+        if (afishaLength > currentAfishaLength) {
+            afishaLength = currentAfishaLength;
         }
-        return new Film[afishaLength];
+        if (afishaLength < 0) {
+            afishaLength = defaultAfishaLength;
+        }
+        Film[] result = new Film[afishaLength];
+        // перебираем массив в прямом порядке
+        // но кладём в результаты в обратно
+
+        for (int i = 0; i < result.length; i++) {
+            int index = currentAfisha.length - i - 1;
+            result[i] = currentAfisha[index];
+        }
+        return result;
     }
 }
