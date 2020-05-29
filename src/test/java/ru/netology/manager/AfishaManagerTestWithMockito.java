@@ -16,7 +16,7 @@ public class AfishaManagerTestWithMockito {
     @Mock
     private AfishaRepository repository;
     @InjectMocks
-    private AfishaManager manager = new AfishaManager(10);
+    private AfishaManager manager = new AfishaManager(repository, 10);
     Film first = new Film(767, 187, "Mockito");
     Film second = new Film(768, 188,"Mockito1");
     Film third = new Film(769, 189,"Mockito2");

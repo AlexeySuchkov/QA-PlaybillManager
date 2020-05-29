@@ -2,10 +2,13 @@ package ru.netology.manager;
 
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.Film;
+import ru.netology.repository.AfishaRepository;
+
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 
 public class AfishaManagerTest {
+    private AfishaRepository repository = new AfishaRepository();
 
 
     private Film first = new Film(1, 1, "first");
@@ -22,7 +25,7 @@ public class AfishaManagerTest {
 
     @Test
     public void moreFilmsThan10Set1() {
-        AfishaManager manager = new AfishaManager(1);
+        AfishaManager manager = new AfishaManager(repository, 1);
 
         manager.add(first);
         manager.add(second);
@@ -45,7 +48,7 @@ public class AfishaManagerTest {
 
     @Test
     public void moreFilmsThan10DefaultOutput() {
-        AfishaManager manager = new AfishaManager(10);
+        AfishaManager manager = new AfishaManager(repository, 10);
         manager.add(first);
         manager.add(second);
         manager.add(third);
@@ -67,7 +70,7 @@ public class AfishaManagerTest {
 
     @Test
     public void zeroFilms() {
-        AfishaManager manager = new AfishaManager(0);
+        AfishaManager manager = new AfishaManager(repository, 0);
         manager.add(first);
         manager.add(second);
         manager.add(third);
@@ -79,7 +82,7 @@ public class AfishaManagerTest {
     }
     @Test
     public void lessFilmsThan10() {
-        AfishaManager manager = new AfishaManager(5);
+        AfishaManager manager = new AfishaManager(repository, 5);
         manager.add(first);
         manager.add(second);
         manager.add(third);
@@ -93,7 +96,7 @@ public class AfishaManagerTest {
 
     @Test
     public void moreFilmsThan10Set7() {
-        AfishaManager manager = new AfishaManager(7);
+        AfishaManager manager = new AfishaManager(repository, 7);
         manager.add(first);
         manager.add(second);
         manager.add(third);
@@ -114,7 +117,7 @@ public class AfishaManagerTest {
     }
     @Test
     public void moreFilmsThan10SetMinus10() {
-        AfishaManager manager = new AfishaManager(-10);
+        AfishaManager manager = new AfishaManager(repository, -10);
         manager.add(first);
         manager.add(second);
         manager.add(third);
@@ -129,13 +132,13 @@ public class AfishaManagerTest {
 
 
         Film[] actual = manager.getAll();
-        Film[] expected = new Film[]{};
+        Film[] expected = new Film[]{eleventh, tenth, ninth, eighth, seventh, sixth, fifth, fourth, third, second};
 
         assertArrayEquals(expected, actual);
     }
     @Test
     public void moreFilmsThan10Set100() {
-        AfishaManager manager = new AfishaManager(100);
+        AfishaManager manager = new AfishaManager(repository, 100);
         manager.add(first);
         manager.add(second);
         manager.add(third);
